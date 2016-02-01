@@ -1,3 +1,4 @@
+var _ = require('lodash');
 var dom = {};
 
 dom.ready = function domReady(callback) {
