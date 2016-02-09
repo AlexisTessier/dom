@@ -33,7 +33,7 @@ dom.select = function domSelect(selector) {
 };
 
 dom.selectOne = function domSelectOne(selector) {
-	return dom.querySelector(selector);
+	return document.querySelector(selector);
 };
 
 dom.forEach = function domForEach(nodeList, block) {
