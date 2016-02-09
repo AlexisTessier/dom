@@ -1,6 +1,6 @@
 {
   "name": "@alexistessier/dom",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "DOM utility belt",
   "main": "index.js",
   "scripts": {

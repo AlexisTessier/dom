@@ -90,8 +90,12 @@ dom.hasClass = function domHasClass(element, className) {
 	})();
 }
 
+dom.setClass = function domSetClass(element, className, add) {
+	dom[add ? "addClass" : "removeClass"](element, className);
+};
+
 dom.toggleClass = function domToggleClass(element, className) {
-	dom[dom.hasClass(element, className) ? "removeClass" : "addClass"](element, className);
+	dom.setClass(element, className, !dom.hasClass(element, className));
 };
 
 dom.prependChild = function domPrependChild(parent, child) {
