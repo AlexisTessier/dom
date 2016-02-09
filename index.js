@@ -11,7 +11,7 @@ dom.ready = function domReady(callback) {
 };
 
 dom.getData = function domGetData(node, key) {
-	var dataValue = typeof node.dataset === 'object' ? node.dataset[key] : (function () {
+	var dataValue = typeof node.dataset === 'object' ? node.dataset[_.camelCase(key)] : (function () {
 		return node.getAttribute(_.kebabCase('data-'+key));
 	})();
 
@@ -19,7 +19,7 @@ dom.getData = function domGetData(node, key) {
 };
 
 dom.setData = function domSetData(node, key, value) {
-	typeof node.dataset === 'object' ? node.dataset[key] = value : (function () {
+	typeof node.dataset === 'object' ? node.dataset[_.camelCase(key)] = value : (function () {
 		node.setAttribute(_.kebabCase('data-'+key), value);
 	})();
 };
@@ -33,7 +33,7 @@ dom.select = function domSelect(selector) {
 };
 
 dom.selectOne = function domSelectOne(selector) {
-	return dom.select(selector)[0];
+	return dom.querySelector(selector);
 };
 
 dom.forEach = function domForEach(nodeList, block) {
