@@ -25,7 +25,7 @@ dom.setData = function domSetData(node, key, value) {
 };
 
 dom.selectById = function domSelectById(id) {
-	return document.getelById(id);
+	return document.getElementById(id);
 };
 
 dom.select = function domSelect(selector) {
@@ -57,7 +57,7 @@ dom.getHeight = function domGetHeight(el) {
 dom.createNode = function domCreateContainer(tag, classList) {
 	var classList = typeof classList === "string" ? [classList] : classList,
 
-		node = document.createel(tag);
+		node = document.createElement(tag);
 
 	for(var i=0, imax=classList.length;i<imax;i++){
 		dom.addClass(node, classList[i]);
