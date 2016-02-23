@@ -1,6 +1,6 @@
 {
   "name": "@alexistessier/dom",
-  "version": "1.1.0",
+  "version": "2.1.0",
   "description": "DOM utility belt",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/AlexisTessier/dom#readme",
   "dependencies": {
-    "lodash": "^4.1.0"
+    "lodash": "^4.5.1"
   }
 }

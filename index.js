@@ -25,7 +25,7 @@ dom.setData = function domSetData(node, key, value) {
 };
 
 dom.selectById = function domSelectById(id) {
-	return document.getElementById(id);
+	return document.getelById(id);
 };
 
 dom.select = function domSelect(selector) {
@@ -42,24 +42,22 @@ dom.forEach = function domForEach(nodeList, block) {
 	}
 };
 
-dom.getStyle = function domGetStyle(element) {
-	return typeof window.getComputedStyle === 'function' ? window.getComputedStyle(element) : {
-		content : ""
-	};
+dom.getStyle = function domGetStyle(el, ruleName) {
+	return typeof ruleName === 'string' ? dom.getStyle(el)[ruleName] : window.getComputedStyle(el);
 };
 
-dom.getWidth = function domGetWidth(element) {
-	return element.clientWidth || element.innerWidth;
+dom.getWidth = function domGetWidth(el) {
+	return el.clientWidth || el.innerWidth;
 };
 
-dom.getHeight = function domGetHeight(element) {
-	return element.clientHeight || element.innerHeight;
+dom.getHeight = function domGetHeight(el) {
+	return el.clientHeight || el.innerHeight;
 };
 
 dom.createNode = function domCreateContainer(tag, classList) {
 	var classList = typeof classList === "string" ? [classList] : classList,
 
-		node = document.createElement(tag);
+		node = document.createel(tag);
 
 	for(var i=0, imax=classList.length;i<imax;i++){
 		dom.addClass(node, classList[i]);
@@ -76,30 +74,62 @@ dom.createSpan = function domCreateDiv(classList) {
 	return dom.createNode('span', classList);
 };
 
-dom.addClass = function domAddClass(element, className) {
-	element.classList ? element.classList.add(className) : (element.className += ' ' + className);
+dom.addClass = function domAddClass(el, className) {
+	el.classList ? el.classList.add(className) : (el.className += ' ' + className);
 };
 
-dom.removeClass = function domRemoveClass(element, className) {
-	element.classList ? element.classList.remove(className) : (element.className = element.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' '));
+dom.removeClass = function domRemoveClass(el, className) {
+	el.classList ? el.classList.remove(className) : (el.className = el.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' '));
 };
 
-dom.hasClass = function domHasClass(element, className) {
-	return element.classList ? element.classList.contains(className) : (function () {
-		return new RegExp('(^| )' + className + '( |$)', 'gi').test(element.className);
+dom.hasClass = function domHasClass(el, className) {
+	return el.classList ? el.classList.contains(className) : (function () {
+		return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
 	})();
 }
 
-dom.setClass = function domSetClass(element, className, add) {
-	dom[add ? "addClass" : "removeClass"](element, className);
+dom.setClass = function domSetClass(el, className, add) {
+	dom[add ? "addClass" : "removeClass"](el, className);
 };
 
-dom.toggleClass = function domToggleClass(element, className) {
-	dom.setClass(element, className, !dom.hasClass(element, className));
+dom.toggleClass = function domToggleClass(el, className) {
+	dom.setClass(el, className, !dom.hasClass(el, className));
 };
 
 dom.prependChild = function domPrependChild(parent, child) {
 	parent.insertBefore(child, parent.firstChild);
 };
+
+dom.appendChild = function domAppendChild(parent, child) {
+	parent.appendChild(child);
+};
+
+dom.clone = function domClone(el) {
+	return el.cloneNode(true);
+};
+
+dom.contains = function domContains(parent, el) {
+	return parent !== el && parent.contains(el);
+};
+
+dom.positionTop = function domPositionTop(el) {
+	return el.offsetTop;
+};
+
+dom.positionLeft = function domPositionLeft(el) {
+	return el.offsetLeft;
+};
+
+dom.position = function domPosition(el) {
+	return {left: el.offsetLeft, top: el.offsetTop};
+};
+
+dom.offset = function domOffset(el) {
+	return el.getBoundingClientRect();
+};
+
+dom.remove = function domRemove(el) {
+	el.parentNode.removeChild(el);
+},
 
 module.exports = dom;
