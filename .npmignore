@@ -1,6 +1,5 @@
-node_modules
-build
 coverage
 coverage-browser
+README.mustache
 logs
 *.log

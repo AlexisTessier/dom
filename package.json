@@ -1,6 +1,6 @@
 {
   "name": "@alexistessier/dom",
-  "version": "2.1.2",
+  "version": "3.0.0",
   "description": "DOM utility belt",
   "main": "index.js",
   "scripts": {
@@ -21,5 +21,8 @@
   "homepage": "https://github.com/AlexisTessier/dom#readme",
   "dependencies": {
     "lodash": "^4.13.1"
+  },
+  "devDependencies": {
+    "@alexistessier/gulp-workflow-common-task": "^2.1.3"
   }
 }
