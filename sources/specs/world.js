@@ -1,0 +1,1 @@
+export let dom = require('../index').default;

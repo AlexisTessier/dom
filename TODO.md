@@ -1,4 +1,4 @@
-+test env (phantom and karma)
++coveralls
 +travis.ci
 +specs
 +implementation

@@ -2,9 +2,12 @@
   "name": "@alexistessier/dom",
   "version": "3.0.0",
   "description": "DOM utility belt",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "dependency-check package.json & karma start",
+    "build": "gulp && node export-specs.js",
+    "prepublish": "npm run build",
+    "postpublish": "npm test"
   },
   "repository": {
     "type": "git",
@@ -23,6 +26,17 @@
     "lodash": "^4.13.1"
   },
   "devDependencies": {
-    "@alexistessier/gulp-workflow-common-task": "^2.1.3"
+    "@alexistessier/gulp-workflow-common-task": "^2.1.3",
+    "@alexistessier/report": "^1.0.4",
+    "brfs": "^1.4.3",
+    "browserify": "^13.0.1",
+    "browserify-istanbul": "^2.0.0",
+    "coveralls": "^2.11.9",
+    "karma": "^1.1.0",
+    "karma-browserify": "^5.0.5",
+    "karma-chrome-launcher": "^1.0.1",
+    "karma-coverage": "^1.0.0",
+    "karma-custom": "^1.1.9",
+    "karma-phantomjs-launcher": "^1.0.1"
   }
 }
