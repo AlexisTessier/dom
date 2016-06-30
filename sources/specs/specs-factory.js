@@ -103,7 +103,7 @@ export function specsFactory(name) {
 			all: ()=>specs
 		};
 	};
-
+	
 	spec.sub = description => {
 		let last = specs.pop();
 		let [spec, subList, assertionList] = last;
