@@ -197,6 +197,10 @@ export function domCreate(tag = 'div', id = null, classList = null) {
 	classList = typeof classList === "string" ? [classList] : classList;
 	let node = document.createElement(tag);
 
+	if(isString(id)){
+		node.setAttribute('id', id);
+	}
+
 	if (isArray(classList)) {
 		for(var i=0, imax=classList.length;i<imax;i++){
 			dom.addClass(node, classList[i]);
