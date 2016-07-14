@@ -47,7 +47,7 @@ dom.getAll = domGetAll;
 /*---------------*/
 
 function isNodeList(val, NodeListConstructorName = defaultNodeListConstructorName){
-	if(isObject(val) && has(val, 'constructor.name')){
+	if(isObject(val)){
 		let className = get(val, 'constructor.name', null);
 
 		return (NodeListConstructorName !== 'NodeList' && isArray(NodeListConstructorName)) ? includes(NodeListConstructorName, className) : (className === NodeListConstructorName);
