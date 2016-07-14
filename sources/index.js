@@ -1,9 +1,14 @@
 let dom = {};
+let defaultNodeListConstructorName = 'NodeList';
 
 import {
 	isArray,
 	isNumber,
-	isString
+	isString,
+	isObject,
+	has,
+	get,
+	includes
 } from 'lodash'
 
 /*---------------*/
@@ -41,8 +46,17 @@ dom.getAll = domGetAll;
 
 /*---------------*/
 
-export function domForEach(nodeList, block) {
-	if(nodeList instanceof NodeList){
+function isNodeList(val, NodeListConstructorName = defaultNodeListConstructorName){
+	if(isObject(val) && has(val, 'contructor.name')){
+		let className = get(val, 'constructor.name', null);
+
+		return (NodeListConstructorName !== 'NodeList' && isArray(NodeListConstructorName)) ? includes(NodeListConstructorName, className) : (className === NodeListConstructorName);
+	}
+	return false;
+}
+
+export function domForEach(nodeList, block, _isNodeList = isNodeList) {
+	if(_isNodeList(nodeList)){
 		for(let i = 0, imax = nodeList.length;i<imax;i++){
 			block(nodeList.item(i), i);
 		}
@@ -69,7 +83,7 @@ dom.forEach = domForEach;
 
 function forEachWrap(func){
 	return function(el) {
-		if(el instanceof NodeList || isArray(el)){
+		if(isNodeList(el) || isArray(el)){
 			dom.forEach(el, e=>{
 				func(...arguments);
 			});
