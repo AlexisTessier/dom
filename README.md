@@ -7,7 +7,7 @@
 [![Stories in Implementation](https://badge.waffle.io/AlexisTessier/dom.svg?label=implementation&title=Implementation)](http://waffle.io/AlexisTessier/dom)
 [![Stories in Ready](https://badge.waffle.io/AlexisTessier/dom.svg?label=ready&title=Ready)](http://waffle.io/AlexisTessier/dom)
 
-[![version](https://img.shields.io/badge/version-3.0.5-blue.svg)](https://github.com/AlexisTessier/dom#readme)
+[![version](https://img.shields.io/badge/version-3.0.6-blue.svg)](https://github.com/AlexisTessier/dom#readme)
 [![npm version](https://badge.fury.io/js/%40alexistessier%2Fdom.svg)](https://badge.fury.io/js/%40alexistessier%2Fdom)
 
 [![Build Status](https://travis-ci.org/AlexisTessier/dom.svg?branch=master)](https://travis-ci.org/AlexisTessier/dom)

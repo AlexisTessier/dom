@@ -1,5 +1,4 @@
 let dom = {};
-let defaultNodeListConstructorName = 'NodeList';
 
 import {
 	isArray,
@@ -46,22 +45,11 @@ dom.getAll = domGetAll;
 
 /*---------------*/
 
-function isNodeList(val, NodeListConstructorName = defaultNodeListConstructorName){
-	if(isObject(val)){
-		let className = get(val, 'constructor.name', null);
-
-		return (NodeListConstructorName !== 'NodeList' && isArray(NodeListConstructorName)) ? includes(NodeListConstructorName, className) : (className === NodeListConstructorName);
-	}
-	return false;
+function _isIterable(val){
+	return isObject(val) && isNumber(val.length);
 }
 
-export function domForEach(nodeList, block, _isNodeList = isNodeList) {
-	if(_isNodeList(nodeList)){
-		for(let i = 0, imax = nodeList.length;i<imax;i++){
-			block(nodeList.item(i), i);
-		}
-		return null
-	}
+export function domForEach(nodeList, block) {
 	if(isString(nodeList)){
 		dom.forEach(dom.getAll(nodeList), block);
 		return null;
@@ -71,6 +59,12 @@ export function domForEach(nodeList, block, _isNodeList = isNodeList) {
 			block(nodeList[i], i);
 		}
 		return null;
+	}
+	if(_isIterable(nodeList)){
+		for(let i = 0, imax = nodeList.length;i<imax;i++){
+			block(nodeList.item(i), i);
+		}
+		return null
 	}
 	if(nodeList){
 		block(nodeList, 0);
@@ -83,7 +77,7 @@ dom.forEach = domForEach;
 
 function forEachWrap(func){
 	return function(el) {
-		if(isNodeList(el) || isArray(el)){
+		if(_isIterable(el)){
 			dom.forEach(el, e=>{
 				func(...arguments);
 			});
