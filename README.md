@@ -1,13 +1,11 @@
 @alexistessier&#x2F;dom
 ================
 
-![Project Status : work in progress](https://img.shields.io/badge/Project%20status-work%20in%20progress-lightgrey.svg)
-[![Stories in Draft](https://badge.waffle.io/AlexisTessier/dom.svg?label=draft&title=Draft)](http://waffle.io/AlexisTessier/dom)
-[![Stories in Specs](https://badge.waffle.io/AlexisTessier/dom.svg?label=specs&title=Specs)](http://waffle.io/AlexisTessier/dom)
-[![Stories in Implementation](https://badge.waffle.io/AlexisTessier/dom.svg?label=implementation&title=Implementation)](http://waffle.io/AlexisTessier/dom)
-[![Stories in Ready](https://badge.waffle.io/AlexisTessier/dom.svg?label=ready&title=Ready)](http://waffle.io/AlexisTessier/dom)
+![Project Status : deprecated](https://img.shields.io/badge/Project%20Status-deprecated-red.svg)
 
-[![version](https://img.shields.io/badge/version-3.0.6-blue.svg)](https://github.com/AlexisTessier/dom#readme)
+**This module is currently deprecated. Just use the default DOM API or eventually some helpers from [http://youmightnotneedjquery.com/](http://youmightnotneedjquery.com/), or even better, if you need to do one task, just search on npm if it was a module which do that, and only that.**
+
+[![version](https://img.shields.io/badge/version-3.1.6-blue.svg)](https://github.com/AlexisTessier/dom#readme)
 [![npm version](https://badge.fury.io/js/%40alexistessier%2Fdom.svg)](https://badge.fury.io/js/%40alexistessier%2Fdom)
 
 [![Build Status](https://travis-ci.org/AlexisTessier/dom.svg?branch=master)](https://travis-ci.org/AlexisTessier/dom)
